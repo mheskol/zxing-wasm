@@ -106,7 +106,12 @@
     btn.addEventListener('click', () => {
       canvas.style='transform: scale(-1, 1);';
       // // Code to run detection via webcam
-      window.navigator.mediaDevices.getUserMedia({ video: true }).then(mediaStream => {
+      window.navigator.mediaDevices.getUserMedia(
+	  {
+		video: {
+			facingMode: "environment"
+		}
+	  }).then(mediaStream => {
         video.srcObject = mediaStream;
 
         video.onloadedmetadata = () => {
